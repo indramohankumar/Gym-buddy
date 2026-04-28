@@ -17,7 +17,8 @@ function Home() {
   useEffect(() => {
     const fetchWorkouts = async () => {
       try {
-        const response = await fetch('/api/workouts');
+        const apiUrl = process.env.REACT_APP_API_URL || '';
+        const response = await fetch(`${apiUrl}/api/workouts`);
         const json = await response.json();
         
         if (response.ok) {
