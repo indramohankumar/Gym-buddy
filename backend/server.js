@@ -32,9 +32,13 @@ if (!mongoUri) {
 
 
 
-// Connect to DB
+// Connect to DB first, then start server.
 mongoose.connect(mongoUri)
-    .then(() => console.log('Connected to MongoDB'))
+    .then(() => {
+        app.listen(port, () => {
+            console.log(`Server running at http://localhost:${port} and connected to MongoDB`);
+        });
+    })
     .catch((error) => {
         if (error?.code === 'ECONNREFUSED' && error?.syscall === 'querySrv') {
             console.error('MongoDB DNS lookup failed for your Atlas SRV host.');
@@ -42,12 +46,5 @@ mongoose.connect(mongoUri)
         }
 
         console.error(`MongoDB connection failed: ${error.message}`);
-    });
-
-if (process.env.NODE_ENV !== 'production') {
-    app.listen(port, () => {
-        console.log(`Server running at http://localhost:${port}`);
-    });
-}
-
-module.exports = app;
+        process.exit(1);
+    })
