@@ -1,8 +1,5 @@
 {
   "buildCommand": "cd frontend && npm run build",
   "installCommand": "cd frontend && npm install",
-  "outputDirectory": "frontend/build",
-  "env": {
-    "REACT_APP_API_URL": "https://gym-buddy-1-7giu.onrender.com"
-  }
+  "outputDirectory": "frontend/build"
 }
