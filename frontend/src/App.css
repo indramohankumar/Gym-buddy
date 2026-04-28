@@ -1,0 +1,460 @@
+/* ============================================ */
+/*  🏋️ WORKOUT BUDDY — Neo-Brutalist Gym Theme  */
+/* ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&display=swap');
+
+/* --- Reset & Base --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  background: #f5f0e8;
+  color: #1a1a2e;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===================== */
+/*      App Container    */
+/* ===================== */
+.App {
+  min-height: 100vh;
+  background: #f5f0e8;
+  color: #1a1a2e;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* ===================== */
+/*        Navbar         */
+/* ===================== */
+header {
+  background: #1a1a2e;
+  border-bottom: 4px solid #1a1a2e;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 0 #e8734a;
+}
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2.5rem;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+header h1 {
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: #f5f0e8;
+  margin: 0;
+  letter-spacing: -0.5px;
+  transition: transform 0.2s ease;
+}
+
+header a {
+  text-decoration: none;
+}
+
+header a:hover h1 {
+  transform: scale(1.03);
+}
+
+.nav-tagline {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #e8734a;
+  letter-spacing: 0.5px;
+}
+
+/* ===================== */
+/*      Page Layout      */
+/* ===================== */
+.pages {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 2.5rem auto;
+  padding: 2rem;
+  animation: fadeUp 0.6s ease forwards;
+}
+
+.home {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+/* ===================== */
+/*    Workouts Column    */
+/* ===================== */
+.workouts {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.workouts > p {
+  font-size: 1rem;
+  color: #6b6b8d;
+  padding: 1rem;
+}
+
+/* ===================== */
+/*     Workout Card      */
+/* ===================== */
+.workout-details {
+  background: #fffdf7;
+  border: 3px solid #1a1a2e;
+  border-radius: 16px;
+  padding: 1.5rem 1.8rem;
+  position: relative;
+  box-shadow: 5px 5px 0px #1a1a2e;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  animation: cardSlideIn 0.4s ease forwards;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+
+.workout-details:nth-child(1) { animation-delay: 0.05s; }
+.workout-details:nth-child(2) { animation-delay: 0.1s; }
+.workout-details:nth-child(3) { animation-delay: 0.15s; }
+.workout-details:nth-child(4) { animation-delay: 0.2s; }
+.workout-details:nth-child(5) { animation-delay: 0.25s; }
+
+.workout-details:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 8px 8px 0px #e8734a;
+}
+
+.workout-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 1rem;
+}
+
+.workout-emoji {
+  font-size: 1.6rem;
+  background: #fff3e0;
+  border: 2px solid #1a1a2e;
+  border-radius: 10px;
+  padding: 0.35rem 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.workout-details h4 {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #1a1a2e;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+/* Stat Badges */
+.workout-card-stats {
+  display: flex;
+  gap: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.stat-badge {
+  background: #eef7ed;
+  border: 2px solid #1a1a2e;
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 80px;
+  box-shadow: 2px 2px 0 #1a1a2e;
+}
+
+.stat-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #6b6b8d;
+  letter-spacing: 1px;
+}
+
+.stat-value {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #1a1a2e;
+}
+
+.workout-date {
+  font-size: 0.78rem;
+  color: #8e8ea0;
+  font-weight: 500;
+  margin-bottom: 0.8rem;
+}
+
+/* Delete Button */
+.delete-btn {
+  background: #fee2e2;
+  border: 2px solid #1a1a2e;
+  border-radius: 8px;
+  padding: 0.45rem 1rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #dc2626;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 #1a1a2e;
+  transition: all 0.15s ease;
+}
+
+.delete-btn:hover {
+  background: #dc2626;
+  color: #fff;
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0 #1a1a2e;
+}
+
+.delete-btn:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 #1a1a2e;
+}
+
+/* ===================== */
+/*   Form Container      */
+/* ===================== */
+.form-container {
+  position: sticky;
+  top: 6rem;
+}
+
+form.create {
+  background: #fffdf7;
+  border: 3px solid #1a1a2e;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 6px 6px 0px #1a1a2e;
+  transition: box-shadow 0.2s ease;
+}
+
+form.create:hover {
+  box-shadow: 8px 8px 0px #e8734a;
+}
+
+form.create h3 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #1a1a2e;
+  margin-bottom: 0.3rem;
+}
+
+.form-subtitle {
+  font-size: 0.85rem;
+  color: #8e8ea0;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.1rem;
+}
+
+form.create label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 0.4rem;
+}
+
+form.create input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2.5px solid #1a1a2e;
+  border-radius: 10px;
+  background: #f5f0e8;
+  color: #1a1a2e;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+form.create input::placeholder {
+  color: #b0afc0;
+  font-weight: 400;
+}
+
+form.create input:focus {
+  border-color: #e8734a;
+  background: #fff;
+  box-shadow: 3px 3px 0 #e8734a;
+}
+
+/* Error state for inputs */
+form.create input.error {
+  border-color: #dc2626;
+  background: #fef2f2;
+  box-shadow: 3px 3px 0 #dc2626;
+}
+
+form.create input.error:focus {
+  border-color: #dc2626;
+  box-shadow: 4px 4px 0 #dc2626;
+}
+
+/* Submit Button */
+form.create button {
+  width: 100%;
+  padding: 0.85rem;
+  margin-top: 0.5rem;
+  border: 3px solid #1a1a2e;
+  border-radius: 10px;
+  background: #e8734a;
+  color: #fff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  box-shadow: 4px 4px 0 #1a1a2e;
+  transition: all 0.15s ease;
+}
+
+form.create button:hover {
+  background: #d4612f;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 #1a1a2e;
+}
+
+form.create button:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 #1a1a2e;
+}
+
+/* ===================== */
+/*    Error Message      */
+/* ===================== */
+.error-message {
+  margin-top: 1rem;
+  padding: 0.85rem 1rem;
+  background: #fef2f2;
+  border: 2.5px solid #dc2626;
+  border-radius: 10px;
+  color: #dc2626;
+  font-size: 0.88rem;
+  font-weight: 600;
+  box-shadow: 3px 3px 0 #dc2626;
+  animation: shakeError 0.4s ease;
+}
+
+/* ===================== */
+/*     Fetch Error       */
+/* ===================== */
+p.error {
+  background: #fef2f2;
+  border: 2.5px solid #dc2626;
+  border-radius: 10px;
+  padding: 1rem 1.2rem;
+  color: #dc2626;
+  font-weight: 600;
+  box-shadow: 3px 3px 0 #dc2626;
+}
+
+/* ===================== */
+/*  Typography Globals   */
+/* ===================== */
+h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  color: #1a1a2e;
+  letter-spacing: -0.5px;
+}
+
+/* ===================== */
+/*      Animations       */
+/* ===================== */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cardSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes shakeError {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-5px); }
+  40% { transform: translateX(5px); }
+  60% { transform: translateX(-3px); }
+  80% { transform: translateX(3px); }
+}
+
+/* ===================== */
+/*    Responsive Design  */
+/* ===================== */
+@media (max-width: 900px) {
+  .home {
+    grid-template-columns: 1fr;
+  }
+
+  .form-container {
+    position: static;
+    order: -1;
+  }
+
+  header .container {
+    padding: 1rem 1.5rem;
+  }
+
+  .pages {
+    padding: 1.5rem;
+    margin: 1.5rem auto;
+  }
+}
+
+@media (max-width: 500px) {
+  header h1 {
+    font-size: 1.4rem;
+  }
+
+  .nav-tagline {
+    display: none;
+  }
+
+  .workout-card-stats {
+    flex-direction: column;
+  }
+
+  .stat-badge {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}

@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+:root{
+--primary:#1aac83;
+--error:#e7195a;
+}
+body{
+    font-family: 'Lato', sans-serif;
+    background-color: #f5f5f5;
+}
+header{
+  background-color: #fff;
+}
+header .container{
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+header a{
+  color: #333;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.pages{
+  max-width: 1400px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color:#fff;
+  border-radius:5px;
+}
+label ,input{
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+}
+input{
+  padding: 10px;
+  border:1px solid #ccc;
+  border-radius:5px;
+}
+button{
+  padding: 10px 20px;
+  background-color: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius:5px;
+  cursor: pointer;
+}
+button:hover{
+  background-color: #1a9e75;
+}
+
+.workout-details {
+  background: #ffffff;
+  border-radius: 8px;
+  margin: 16px 0;
+  padding: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  color: #1f2937;
+}
+
+.workout-details h4 {
+  margin: 0 0 8px;
+  color: #0f766e;
+}
+
+.workout-details p {
+  margin: 6px 0;
+}
+
+.workout-details .delete-btn {
+  margin-top: 10px;
+  background-color: #dc2626;
+}
+
+.workout-details .delete-btn:hover {
+  background-color: #b91c1c;
+}
+
