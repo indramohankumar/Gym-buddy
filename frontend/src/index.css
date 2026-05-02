@@ -19,6 +19,98 @@ header .container{
   align-items: center;
 
 }
+
+/* Neumorphic navbar styles */
+.site-header{
+  background: transparent;
+  padding: 18px 12px;
+}
+.site-header__inner{
+  max-width: 820px; /* tightened width */
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 10px;
+  border-radius: 12px;
+  background: #eef3f7;
+  box-shadow: 6px 6px 12px rgba(174,184,200,0.32), -6px -6px 12px rgba(255,255,255,0.88);
+}
+.brand{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+.brand__mark{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  font-weight: 700;
+  color: #0f766e;
+  background: linear-gradient(180deg,#ffffff,#e6eef2);
+  box-shadow: 6px 6px 12px rgba(174,184,200,0.35), -6px -6px 12px rgba(255,255,255,0.9);
+}
+.brand__title{
+  display: block;
+  font-weight: 700;
+  color: #0f172a;
+}
+.brand__subtitle{
+  display: block;
+  font-size: 0.75rem;
+  color: #4b5563;
+  margin-top: 2px;
+}
+
+.nav-actions{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+.nav-link{
+  padding: 8px 12px;
+  border-radius: 999px;
+  color: #0f172a;
+  text-decoration: none;
+  font-weight: 600;
+  background: linear-gradient(180deg, #f7f9fb, #eef3f7);
+  box-shadow: 4px 4px 10px rgba(174,184,200,0.28), -4px -4px 10px rgba(255,255,255,0.85);
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.nav-link:hover{
+  transform: translateY(-2px);
+  box-shadow: 6px 6px 14px rgba(174,184,200,0.32), -6px -6px 14px rgba(255,255,255,0.9);
+}
+.nav-link--primary{
+  background: linear-gradient(180deg,var(--primary), #128a6b);
+  color: #fff;
+  box-shadow: 6px 6px 14px rgba(26,158,117,0.28), -6px -6px 14px rgba(255,255,255,0.06);
+}
+
+/* Logout button as neumorphic pill */
+nav > div button{
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(180deg,#f7f9fb,#eef3f7);
+  box-shadow: 4px 4px 10px rgba(174,184,200,0.28), -4px -4px 10px rgba(255,255,255,0.85);
+  cursor: pointer;
+  font-weight: 600;
+}
+nav > div button:hover{transform: translateY(-2px)}
+
+/* Make navbar less tall on small screens */
+@media (max-width: 640px){
+  .site-header__inner{padding:8px; gap:10px}
+  .brand__subtitle{display:none}
+  .brand__mark{width:36px;height:36px}
+  .nav-link{padding:6px 10px;font-size:0.9rem}
+}
 header a{
   color: #333;
   text-decoration: none;

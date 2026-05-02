@@ -4,12 +4,15 @@ import React, { useEffect, useState } from 'react'
 import WorkoutDetails from '../components/workoutdetails';
 import WorkoutForm from '../components/workoutfrom';
 import { useWorkoutsContext } from '../components/useworkoutscontext';
+import { useAuthContext } from '../hooks/useAuthContext';
+
 
 
 function Home() {
   //use state
   //const [workouts, setWorkouts] = useState(null);
   const { workouts, dispatch } = useWorkoutsContext();
+  const { user } = useAuthContext();
 
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -18,7 +21,11 @@ function Home() {
     const fetchWorkouts = async () => {
       try {
         const apiUrl = process.env.REACT_APP_API_URL || '';
-        const response = await fetch(`${apiUrl}/api/workouts`);
+        const response = await fetch(`${apiUrl}/api/workouts`, {
+          headers: {
+            'Authorization': `Bearer ${user.token}`
+          }
+        });
         const json = await response.json();
         
         if (response.ok) {
@@ -26,7 +33,7 @@ function Home() {
          // setError(null);
          dispatch({ type: 'SET_WORKOUTS', payload: json });
          setError(null);
-         console.log('workouts fetched successfully', json);
+          console.log('workouts fetched successfully', json);
          
         } else {
           setError(json.error || 'Failed to fetch workouts. Server returned an error.');
@@ -37,9 +44,10 @@ function Home() {
         setIsLoading(false);
       }
     }
-    
-    fetchWorkouts();
-  }, [dispatch])
+    if (user) {
+      fetchWorkouts();
+    }
+  }, [dispatch, user])
   
 
   return (

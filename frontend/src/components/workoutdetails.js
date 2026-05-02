@@ -1,13 +1,22 @@
 import React from 'react'
 import { useWorkoutsContext } from './useworkoutscontext';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 const WorkoutDetails = ({workout}) => {
   const { dispatch } = useWorkoutsContext();
+  const { user } = useAuthContext();
 
   const handleClick = async () => {
+    if (!user) {
+      return
+    }
+
     const apiUrl = process.env.REACT_APP_API_URL || '';
     const response = await fetch(`${apiUrl}/api/workouts/` + workout._id, {
-      method: 'DELETE'
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${user.token}`
+      }
     })
     const json = await response.json();
     if (response.ok) {
@@ -19,7 +28,7 @@ const WorkoutDetails = ({workout}) => {
   const formatDate = (dateString) => {
     const options = { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' };
     return new Date(dateString).toLocaleDateString('en-US', options);
-  }
+   }
 
   return (
     <div className='workout-details'>

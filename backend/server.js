@@ -2,7 +2,9 @@ const express = require('express');
 const cors = require('cors');
 const dotenv =require('dotenv')
 const mongoose = require('mongoose')
+//routes
 const workoutroutes = require('./routes/workout')
+const userroutes = require('./routes/user')
 dotenv.config()
 
 const port = process.env.PORT || 4000;
@@ -24,6 +26,7 @@ app.get('/',(req,res)=>{
     res.send('Backend is running');
 })
 app.use('/api/workouts',workoutroutes)
+app.use('/api/user',userroutes)
 
 if (!mongoUri) {
     console.error('Startup failed: MONGO_URI is missing in backend/.env');

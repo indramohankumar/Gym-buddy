@@ -19,6 +19,10 @@ const workoutSchema = new Schema(
             required: [true, 'Load (in kg) is required'],
             min: [0, 'Load cannot be negative'],
         },
+        user_id: {
+            type: String,
+            required: true,
+        }
     },
     {
         timestamps: true,

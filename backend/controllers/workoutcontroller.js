@@ -2,8 +2,9 @@ const workout=require('../models/workoutmodel')
 const mongoose=require('mongoose')
 // get all workouts
 exports.getworkouts = async (req, res) => {
+    const user_id = req.user._id;
     try {
-        const workouts = await workout.find({}).sort({ createdAt: -1 })
+        const workouts = await workout.find({ user_id }).sort({ createdAt: -1 })
         res.status(200).json(workouts)
     } catch (error) {
         res.status(400).json({ error: error.message })
@@ -53,7 +54,8 @@ exports.getworkout = async (req, res) => {
     }
 
     try{
-        const newWorkout = await workout.create({ title, load, reps })
+        const user_id = req.user._id;
+        const newWorkout = await workout.create({ title, load, reps, user_id })
         return res.status(200).json(newWorkout)
     }
     catch(error){
